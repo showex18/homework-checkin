@@ -1,0 +1,153 @@
+/* 任务清单页样式 */
+.filter-bar {
+  display: flex;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 8rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.filter-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+  color: #999;
+  border-radius: 12rpx;
+  transition: all 0.2s;
+}
+
+.filter-item.active {
+  background: #4A90D9;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 学科分组 */
+.subject-group {
+  margin-bottom: 30rpx;
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  padding: 0 10rpx 16rpx;
+}
+
+.group-count {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 16rpx;
+}
+
+/* 任务卡片 */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.task-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx 28rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.task-card:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.task-card.checked-today {
+  border-left: 6rpx solid #4CAF50;
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.task-card-title-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.task-card-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.task-card-status {
+  margin-left: 16rpx;
+}
+
+.status-done {
+  font-size: 24rpx;
+  color: #4CAF50;
+}
+
+.task-card-badge {
+  background: #E8F5E9;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.badge-today {
+  font-size: 22rpx;
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.task-card-progress {
+  display: flex;
+  align-items: center;
+}
+
+.task-card-progress .progress-bar {
+  flex: 1;
+  margin-right: 16rpx;
+}
+
+.progress-text {
+  font-size: 22rpx;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* 悬浮按钮 */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(74, 144, 217, 0.4);
+  z-index: 100;
+}
+
+.fab:active {
+  transform: scale(0.92);
+}
+
+.fab-icon {
+  font-size: 52rpx;
+  color: #fff;
+}
+
+/* 加载中 */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 100rpx 0;
+}
