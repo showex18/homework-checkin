@@ -1,0 +1,178 @@
+/* 进度页样式 */
+.stat-card {
+  text-align: center;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.stat-num {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #4A90D9;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.stat-unit {
+  font-size: 20rpx;
+  color: #ccc;
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #eee;
+}
+
+/* 日历热力图 */
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.weekday-row {
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.weekday-label {
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.calendar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.calendar-day {
+  width: calc((100% - 48rpx) / 7);
+  aspect-ratio: 1;
+  border-radius: 10rpx;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.calendar-day.checked {
+  background: #4A90D9;
+}
+
+.calendar-day.today {
+  border: 3rpx solid #FF8E53;
+}
+
+.day-num {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.calendar-day.checked .day-num {
+  color: #fff;
+  font-weight: 600;
+}
+
+.day-dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: 4rpx;
+}
+
+/* 图例 */
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+  margin-top: 24rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.legend-box {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 6rpx;
+  background: #f0f0f0;
+  margin-right: 8rpx;
+}
+
+.legend-box.checked {
+  background: #4A90D9;
+}
+
+.legend-box.today-box {
+  background: #f0f0f0;
+  border: 3rpx solid #FF8E53;
+}
+
+/* 科目进度 */
+.subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.subject-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.subject-percent {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.subject-detail {
+  font-size: 22rpx;
+  color: #bbb;
+  margin-top: 8rpx;
+}
+
+/* 加载中 */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 100rpx 0;
+}
