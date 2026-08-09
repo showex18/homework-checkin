@@ -1,0 +1,9 @@
+{
+  "name": "parseTask",
+  "version": "1.0.0",
+  "description": "AI解析作业通知照片",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}
