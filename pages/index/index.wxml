@@ -1,0 +1,95 @@
+<!-- 首页 -->
+<view class="container">
+  <!-- 顶部问候 -->
+  <view class="header">
+    <view class="greeting">
+      <text class="hello">Hi, {{childName || '宝贝'}} 👋</text>
+      <text class="date">{{todayDate}}</text>
+    </view>
+    <view class="streak-badge" wx:if="{{streakDays > 0}}">
+      <text class="streak-icon">🔥</text>
+      <text class="streak-text">连续{{streakDays}}天</text>
+    </view>
+  </view>
+
+  <!-- 今日概览卡片 -->
+  <view class="card overview-card">
+    <view class="overview-row">
+      <view class="overview-item">
+        <text class="overview-num">{{totalTasks}}</text>
+        <text class="overview-label">总任务</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-num today-color">{{todayCheckins}}</text>
+        <text class="overview-label">今日已打卡</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-num pending-color">{{todayPending}}</text>
+        <text class="overview-label">待打卡</text>
+      </view>
+    </view>
+
+    <!-- 进度条 -->
+    <view class="progress-section" wx:if="{{totalTasks > 0}}">
+      <view class="progress-info">
+        <text class="progress-label">暑假作业总进度</text>
+        <text class="progress-percent">{{progressPercent}}%</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-bar-fill" style="width: {{progressPercent}}%"></view>
+      </view>
+      <text class="progress-detail">{{completedTasks}} / {{totalTasks}} 已完成</text>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="action-btn camera-btn" bindtap="goCamera">
+      <view class="action-icon">📷</view>
+      <text class="action-text">拍照导入</text>
+      <text class="action-desc">AI识别作业单</text>
+    </view>
+    <view class="action-btn" bindtap="goTaskList">
+      <view class="action-icon">📋</view>
+      <text class="action-text">任务清单</text>
+      <text class="action-desc">管理所有任务</text>
+    </view>
+  </view>
+
+  <!-- 今日待打卡 -->
+  <view class="today-section" wx:if="{{todayTasks.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">今日待打卡</text>
+      <text class="section-more" bindtap="goTaskList">全部 ></text>
+    </view>
+    <view class="today-list">
+      <view
+        class="today-item {{item.checkedToday ? 'checked' : ''}}"
+        wx:for="{{todayTasks}}"
+        wx:key="_id"
+        data-id="{{item._id}}"
+        bindtap="goCheckin"
+      >
+        <view class="today-item-left">
+          <view class="tag {{item.subjectStyle.tag}}">{{item.subject}}</view>
+          <text class="today-item-title">{{item.title}}</text>
+        </view>
+        <view class="today-item-right">
+          <text class="check-status checked" wx:if="{{item.checkedToday}}">✓ 已打卡</text>
+          <text class="check-status" wx:else>去打卡 ></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && totalTasks === 0}}">
+    <view class="empty-icon">📝</view>
+    <view class="empty-text">
+      还没有任务哦~\n点击「拍照导入」让AI帮你识别作业清单
+    </view>
+    <view class="empty-btn" bindtap="goCamera">立即导入</view>
+  </view>
+</view>
