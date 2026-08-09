@@ -1,0 +1,256 @@
+/* 首页样式 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0 30rpx;
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+}
+
+.hello {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.date {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(255, 107, 107, 0.3);
+}
+
+.streak-icon {
+  font-size: 28rpx;
+  margin-right: 6rpx;
+}
+
+.streak-text {
+  font-size: 24rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 概览卡片 */
+.overview-card {
+  text-align: center;
+}
+
+.overview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10rpx 0 30rpx;
+}
+
+.overview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.overview-num {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.today-color {
+  color: #4A90D9;
+}
+
+.pending-color {
+  color: #FF8E53;
+}
+
+.overview-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.overview-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #eee;
+}
+
+/* 进度条区域 */
+.progress-section {
+  padding-top: 20rpx;
+  border-top: 2rpx solid #f5f5f5;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.progress-label {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.progress-percent {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #4A90D9;
+}
+
+.progress-detail {
+  font-size: 24rpx;
+  color: #bbb;
+  margin-top: 12rpx;
+  display: block;
+  text-align: right;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.action-btn {
+  flex: 1;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+.camera-btn {
+  background: linear-gradient(135deg, #4A90D9 0%, #6FB7E7 100%);
+}
+
+.camera-btn .action-icon,
+.camera-btn .action-text,
+.camera-btn .action-desc {
+  color: #fff;
+}
+
+.action-icon {
+  font-size: 52rpx;
+  margin-bottom: 12rpx;
+}
+
+.action-text {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.action-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+/* 今日待打卡 */
+.today-section {
+  margin-bottom: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #4A90D9;
+}
+
+.today-list {
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.today-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 30rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.today-item:last-child {
+  border-bottom: none;
+}
+
+.today-item:active {
+  background: #f9f9f9;
+}
+
+.today-item.checked {
+  opacity: 0.6;
+}
+
+.today-item-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.today-item-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 380rpx;
+}
+
+.check-status {
+  font-size: 26rpx;
+  color: #4A90D9;
+}
+
+.check-status.checked {
+  color: #4CAF50;
+}
+
+/* 空状态按钮 */
+.empty-btn {
+  margin-top: 30rpx;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  color: #fff;
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 24rpx rgba(74, 144, 217, 0.3);
+}
+
+.empty-btn:active {
+  opacity: 0.85;
+}
