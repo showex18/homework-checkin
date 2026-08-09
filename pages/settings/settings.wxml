@@ -1,0 +1,122 @@
+<!-- 设置页 -->
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="card profile-card">
+    <view class="profile-header">
+      <view class="avatar">
+        <text class="avatar-text">{{childName ? childName[0] : '👋'}}</text>
+      </view>
+      <view class="profile-info">
+        <text class="profile-name">{{childName || '未设置'}}</text>
+        <text class="profile-grade">{{grade || '请选择年级'}}</text>
+      </view>
+      <view class="pro-badge" wx:if="{{isPro}}">
+        <text>PRO</text>
+      </view>
+    </view>
+
+    <!-- 统计 -->
+    <view class="profile-stats">
+      <view class="profile-stat">
+        <text class="stat-num">{{taskCount}}</text>
+        <text class="stat-label">任务</text>
+      </view>
+      <view class="profile-stat">
+        <text class="stat-num">{{checkinCount}}</text>
+        <text class="stat-label">打卡</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 孩子信息设置 -->
+  <view class="card">
+    <view class="card-title">孩子信息</view>
+
+    <view class="form-item">
+      <text class="form-label">姓名</text>
+      <input
+        class="form-input"
+        value="{{childName}}"
+        bindinput="inputName"
+        placeholder="输入孩子姓名"
+        maxlength="10"
+      />
+    </view>
+
+    <view class="form-item" bindtap="showGradePicker">
+      <text class="form-label">年级</text>
+      <picker
+        mode="selector"
+        range="{{grades}}"
+        value="{{gradeIndex}}"
+        bindchange="onGradeChange"
+      >
+        <view class="form-picker">
+          <text class="{{grade ? 'picker-text' : 'picker-placeholder'}}">
+            {{grade || '请选择年级'}}
+          </text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="btn-primary" bindtap="saveInfo" style="margin-top: 20rpx;">保存</view>
+  </view>
+
+  <!-- 功能设置 -->
+  <view class="card">
+    <view class="card-title">功能设置</view>
+
+    <view class="setting-item" bindtap="enableReminder">
+      <view class="setting-left">
+        <text class="setting-icon">🔔</text>
+        <view class="setting-info">
+          <text class="setting-name">每日打卡提醒</text>
+          <text class="setting-desc">每天晚上8点提醒打卡</text>
+        </view>
+      </view>
+      <text class="setting-arrow">></text>
+    </view>
+
+    <view class="setting-item">
+      <button class="share-btn" open-type="share">
+        <view class="setting-left">
+          <text class="setting-icon">📤</text>
+          <view class="setting-info">
+            <text class="setting-name">分享给好友</text>
+            <text class="setting-desc">{{isPro ? '感谢你的支持！' : '分享即可解锁全部功能'}}</text>
+          </view>
+        </view>
+      </button>
+    </view>
+  </view>
+
+  <!-- 其他 -->
+  <view class="card">
+    <view class="setting-item" bindtap="clearCache">
+      <view class="setting-left">
+        <text class="setting-icon">🗑️</text>
+        <view class="setting-info">
+          <text class="setting-name">清除缓存</text>
+        </view>
+      </view>
+      <text class="setting-arrow">></text>
+    </view>
+
+    <view class="setting-item" bindtap="showAbout">
+      <view class="setting-left">
+        <text class="setting-icon">ℹ️</text>
+        <view class="setting-info">
+          <text class="setting-name">关于</text>
+        </view>
+      </view>
+      <text class="setting-arrow">></text>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer">
+    <text class="footer-text">暑假作业打卡神器 v1.0</text>
+    <text class="footer-sub">让暑假作业不再手忙脚乱</text>
+  </view>
+</view>
