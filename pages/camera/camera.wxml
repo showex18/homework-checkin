@@ -1,0 +1,125 @@
+<!-- 拍照导入页 -->
+<view class="container">
+  <!-- 步骤1: 拍照引导 -->
+  <block wx:if="{{step === 'camera'}}">
+    <view class="camera-guide">
+      <view class="guide-icon">📷</view>
+      <view class="guide-title">拍照导入作业通知</view>
+      <view class="guide-desc">
+        拍一张学校发的暑假作业通知单/清单照片，\nAI会自动识别并生成任务列表
+      </view>
+
+      <!-- 示例图 -->
+      <view class="example-box">
+        <view class="example-item">
+          <text class="example-emoji">📄</text>
+          <text class="example-text">作业通知单</text>
+        </view>
+        <text class="arrow">→</text>
+        <view class="example-item">
+          <text class="example-emoji">🤖</text>
+          <text class="example-text">AI识别</text>
+        </view>
+        <text class="arrow">→</text>
+        <view class="example-item">
+          <text class="example-emoji">✅</text>
+          <text class="example-text">任务清单</text>
+        </view>
+      </view>
+
+      <!-- 限制提示 -->
+      <view class="limit-tip" wx:if="{{!canAddMore}}">
+        <text>⚠️ {{parseError}}</text>
+      </view>
+
+      <view class="btn-primary拍照" bindtap="takePhoto">
+        📷 拍照 / 选择图片
+      </view>
+      <view class="btn-secondary" bindtap="cancel" style="margin-top: 20rpx;">取消</view>
+
+      <!-- 拍照技巧 -->
+      <view class="tips">
+        <view class="tips-title">📸 拍照小贴士</view>
+        <view class="tip-item">• 确保光线充足，文字清晰</view>
+        <view class="tip-item">• 尽量正面拍摄，避免倾斜</view>
+        <view class="tip-item">• 包含完整的作业内容</view>
+        <view class="tip-item">• 也可以手动添加任务</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 步骤2: AI解析中 -->
+  <block wx:if="{{step === 'parsing'}}">
+    <view class="parsing-container">
+      <view class="parsing-image-wrap">
+        <image src="{{imagePath}}" mode="aspectFit" class="parsing-image" />
+        <view class="parsing-overlay">
+          <view class="loading-dots">
+            <view class="dot"></view>
+            <view class="dot"></view>
+            <view class="dot"></view>
+          </view>
+        </view>
+      </view>
+      <view class="parsing-text">AI正在识别作业内容...</view>
+      <view class="parsing-subtext">通常需要3-5秒</view>
+    </view>
+  </block>
+
+  <!-- 步骤3: 确认任务清单 -->
+  <block wx:if="{{step === 'confirm'}}">
+    <view class="confirm-header">
+      <text class="confirm-title">识别到 {{editingTasks.length}} 个任务</text>
+      <text class="confirm-desc">请确认任务信息，可编辑/删除</text>
+    </view>
+
+    <!-- 任务列表 -->
+    <view class="parsed-tasks">
+      <view
+        class="parsed-task {{!item.selected ? 'unselected' : ''}}"
+        wx:for="{{editingTasks}}"
+        wx:key="id"
+      >
+        <view class="task-checkbox" data-id="{{item.id}}" bindtap="toggleTask">
+          <text class="checkbox-icon">{{item.selected ? '☑' : '☐'}}</text>
+        </view>
+
+        <view class="task-content">
+          <view class="task-row">
+            <view
+              class="tag {{item.subjectStyle.tag}}"
+              data-id="{{item.id}}"
+              bindtap="editTaskSubject"
+            >{{item.subject}} ▾</view>
+            <input
+              class="task-input"
+              value="{{item.title}}"
+              data-id="{{item.id}}"
+              bindinput="editTaskTitle"
+              placeholder="任务名称"
+            />
+          </view>
+          <view class="task-meta" wx:if="{{item.totalDays}}">
+            <text class="meta-text">📅 共{{item.totalDays}}天</text>
+          </view>
+        </view>
+
+        <view class="task-delete" data-id="{{item.id}}" bindtap="deleteParsedTask">
+          <text>✕</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 手动添加 -->
+    <view class="add-manual" bindtap="addManualTask">
+      <text class="add-icon">+</text>
+      <text>手动添加任务</text>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="confirm-actions">
+      <view class="btn-secondary" bindtap="retake" style="flex: 1; margin-right: 16rpx;">重新拍照</view>
+      <view class="btn-primary" bindtap="saveTasks" style="flex: 1;">保存任务</view>
+    </view>
+  </block>
+</view>
