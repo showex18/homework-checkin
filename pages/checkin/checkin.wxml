@@ -1,0 +1,75 @@
+<!-- 打卡页 -->
+<view class="container" wx:if="{{task}}">
+  <!-- 任务信息 -->
+  <view class="card task-info-card">
+    <view class="task-info-header">
+      <view class="tag {{subjectStyle.tag}}">{{task.subject}}</view>
+      <text class="task-info-title">{{task.title}}</text>
+    </view>
+    <view class="task-info-progress">
+      <view class="progress-bar">
+        <view class="progress-bar-fill" style="width: {{task.progressPercent}}%"></view>
+      </view>
+      <text class="progress-text">第 {{task.checkedDays + 1}} / {{task.totalDays}} 天 · 已完成 {{task.progressPercent}}%</text>
+    </view>
+  </view>
+
+  <!-- 打卡日期 -->
+  <view class="checkin-date">
+    <text class="date-label">今日打卡</text>
+    <text class="date-text">{{todayDate}}</text>
+  </view>
+
+  <!-- 拍照区域 -->
+  <view class="photo-section">
+    <view class="section-title">📸 打卡照片</view>
+
+    <view class="photo-upload" wx:if="{{!photoPath}}" bindtap="takePhoto">
+      <view class="upload-placeholder">
+        <text class="upload-icon">📷</text>
+        <text class="upload-text">点击拍照</text>
+        <text class="upload-hint">拍下作业完成照片</text>
+      </view>
+    </view>
+
+    <view class="photo-preview" wx:if="{{photoPath}}">
+      <image src="{{photoPath}}" mode="aspectFit" class="preview-img" />
+      <view class="photo-actions">
+        <view class="photo-action retake" bindtap="takePhoto">重拍</view>
+        <view class="photo-action remove" bindtap="removePhoto">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="note-section">
+    <view class="section-title">📝 备注（选填）</view>
+    <textarea
+      class="note-input"
+      value="{{note}}"
+      bindinput="inputNote"
+      placeholder="今天完成了什么内容？有什么困难？"
+      maxlength="200"
+      auto-height
+    />
+    <text class="note-count">{{note.length}}/200</text>
+  </view>
+
+  <!-- 打卡按钮 -->
+  <view class="checkin-btn-wrap">
+    <view class="btn-primary {{isChecking ? 'disabled' : ''}}" bindtap="confirmCheckin">
+      {{isChecking ? '打卡中...' : '✓ 确认打卡'}}
+    </view>
+  </view>
+</view>
+
+<!-- 成功动画 -->
+<view class="success-overlay" wx:if="{{showSuccess}}">
+  <view class="success-content">
+    <view class="success-icon-wrap">
+      <view class="success-icon">✓</view>
+    </view>
+    <text class="success-text">打卡成功！</text>
+    <text class="success-subtext">第 {{task.checkedDays + 1}} 天完成 🎉</text>
+  </view>
+</view>
