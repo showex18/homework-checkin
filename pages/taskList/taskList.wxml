@@ -1,0 +1,70 @@
+<!-- 任务清单页 -->
+<view class="container">
+  <!-- 筛选标签 -->
+  <view class="filter-bar">
+    <view class="filter-item {{filter === 'all' ? 'active' : ''}}" data-filter="all" bindtap="switchFilter">全部</view>
+    <view class="filter-item {{filter === 'active' ? 'active' : ''}}" data-filter="active" bindtap="switchFilter">进行中</view>
+    <view class="filter-item {{filter === 'completed' ? 'active' : ''}}" data-filter="completed" bindtap="switchFilter">已完成</view>
+  </view>
+
+  <!-- 任务列表（按学科分组） -->
+  <block wx:if="{{groupedTasks.length > 0}}">
+    <view class="subject-group" wx:for="{{groupedTasks}}" wx:key="subject">
+      <view class="group-header">
+        <view class="tag {{item.style.tag}}">{{item.subject}}</view>
+        <text class="group-count">{{item.tasks.length}}个任务</text>
+      </view>
+
+      <view class="task-list">
+        <view
+          class="task-card {{task.checkedToday ? 'checked-today' : ''}}"
+          wx:for="{{item.tasks}}"
+          wx:for-item="task"
+          wx:key="_id"
+          data-id="{{task._id}}"
+          bindtap="goCheckin"
+          bindlongpress="onLongPress"
+        >
+          <view class="task-card-header">
+            <view class="task-card-title-wrap">
+              <text class="task-card-title">{{task.title}}</text>
+              <view class="task-card-status" wx:if="{{task.status === 'completed'}}">
+                <text class="status-done">✓ 已完成</text>
+              </view>
+            </view>
+            <view class="task-card-badge" wx:if="{{task.checkedToday}}">
+              <text class="badge-today">今日✓</text>
+            </view>
+          </view>
+
+          <view class="task-card-progress">
+            <view class="progress-bar">
+              <view class="progress-bar-fill" style="width: {{task.progressPercent}}%"></view>
+            </view>
+            <text class="progress-text">{{task.checkedDays}}/{{task.totalDays}}天 · {{task.progressPercent}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && tasks.length === 0}}">
+    <view class="empty-icon">📋</view>
+    <view class="empty-text">还没有任务\n点击下方按钮添加</view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <view class="loading-dots">
+      <view class="dot"></view>
+      <view class="dot"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="fab" bindtap="addTask">
+    <text class="fab-icon">+</text>
+  </view>
+</view>
