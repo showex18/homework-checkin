@@ -1,0 +1,263 @@
+/* 拍照导入页样式 */
+.camera-guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 30rpx;
+}
+
+.guide-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.guide-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16rpx;
+}
+
+.guide-desc {
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 50rpx;
+}
+
+/* 示例流程 */
+.example-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx;
+  margin-bottom: 50rpx;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.example-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.example-emoji {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.example-text {
+  font-size: 22rpx;
+  color: #666;
+}
+
+.arrow {
+  font-size: 36rpx;
+  color: #ccc;
+  margin: 0 20rpx;
+}
+
+/* 限制提示 */
+.limit-tip {
+  background: #FFF3E0;
+  color: #E65100;
+  font-size: 24rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+/* 拍照按钮 */
+.btn-primary拍照 {
+  width: 100%;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50rpx;
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(74, 144, 217, 0.3);
+}
+
+/* 拍照技巧 */
+.tips {
+  margin-top: 60rpx;
+  width: 100%;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.tip-item {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 2;
+}
+
+/* 解析中 */
+.parsing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100rpx;
+}
+
+.parsing-image-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.parsing-image {
+  width: 100%;
+  height: 500rpx;
+}
+
+.parsing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(74, 144, 217, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parsing-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #4A90D9;
+  margin-top: 40rpx;
+}
+
+.parsing-subtext {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 12rpx;
+}
+
+/* 确认任务 */
+.confirm-header {
+  padding: 30rpx 0 20rpx;
+}
+
+.confirm-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: block;
+}
+
+.confirm-desc {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.parsed-tasks {
+  margin-bottom: 20rpx;
+}
+
+.parsed-task {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.parsed-task.unselected {
+  opacity: 0.5;
+}
+
+.task-checkbox {
+  margin-right: 20rpx;
+}
+
+.checkbox-icon {
+  font-size: 36rpx;
+  color: #4A90D9;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+}
+
+.task-input {
+  flex: 1;
+  font-size: 28rpx;
+  margin-left: 16rpx;
+  border-bottom: 2rpx solid transparent;
+}
+
+.task-meta {
+  margin-top: 10rpx;
+}
+
+.meta-text {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.task-delete {
+  padding: 10rpx 16rpx;
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.task-delete:active {
+  color: #f44336;
+}
+
+/* 手动添加 */
+.add-manual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  border: 2rpx dashed #4A90D9;
+  color: #4A90D9;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+}
+
+.add-icon {
+  font-size: 36rpx;
+  margin-right: 10rpx;
+}
+
+/* 确认操作 */
+.confirm-actions {
+  display: flex;
+  padding: 20rpx 0 60rpx;
+}
