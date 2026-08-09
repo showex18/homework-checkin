@@ -1,0 +1,96 @@
+<!-- 进度页 -->
+<view class="container">
+  <!-- 总览卡片 -->
+  <view class="card stat-card">
+    <view class="stat-row">
+      <view class="stat-item">
+        <text class="stat-num">{{streakDays}}</text>
+        <text class="stat-label">连续打卡</text>
+        <text class="stat-unit">天</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{totalCheckins}}</text>
+        <text class="stat-label">累计打卡</text>
+        <text class="stat-unit">次</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{overallProgress}}%</text>
+        <text class="stat-label">总进度</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 日历热力图 -->
+  <view class="card">
+    <view class="card-title">📅 最近30天打卡</view>
+    <view class="calendar-heatmap">
+      <view class="weekday-row">
+        <text class="weekday-label">一</text>
+        <text class="weekday-label">二</text>
+        <text class="weekday-label">三</text>
+        <text class="weekday-label">四</text>
+        <text class="weekday-label">五</text>
+        <text class="weekday-label">六</text>
+        <text class="weekday-label">日</text>
+      </view>
+      <view class="calendar-grid">
+        <view
+          class="calendar-day {{item.hasCheckin ? 'checked' : ''}} {{item.isToday ? 'today' : ''}}"
+          wx:for="{{calendarDays}}"
+          wx:key="date"
+        >
+          <text class="day-num">{{item.day}}</text>
+          <view class="day-dot" wx:if="{{item.hasCheckin}}"></view>
+        </view>
+      </view>
+    </view>
+    <view class="calendar-legend">
+      <view class="legend-item">
+        <view class="legend-box checked"></view>
+        <text>已打卡</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-box"></view>
+        <text>未打卡</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-box today-box"></view>
+        <text>今天</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 科目进度 -->
+  <view class="card" wx:if="{{subjectStats.length > 0}}">
+    <view class="card-title">📊 各科进度</view>
+    <view class="subject-list">
+      <view class="subject-item" wx:for="{{subjectStats}}" wx:key="subject">
+        <view class="subject-header">
+          <view class="tag {{item.style.tag}}">{{item.subject}}</view>
+          <text class="subject-percent">{{item.percent}}%</text>
+        </view>
+        <view class="progress-bar">
+          <view class="progress-bar-fill" style="width: {{item.percent}}%; background: {{item.style.color}}"></view>
+        </view>
+        <text class="subject-detail">{{item.checkedDays}} / {{item.totalDays}} 天 · {{item.taskCount}}个任务</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && totalCheckins === 0}}">
+    <view class="empty-icon">📊</view>
+    <view class="empty-text">还没有打卡记录\n完成第一次打卡后就能看到进度啦</view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <view class="loading-dots">
+      <view class="dot"></view>
+      <view class="dot"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+</view>
